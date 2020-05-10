@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service definition for language'
+define service YUI_C_LANGUAGE_M_13 {
+  expose YC_LANGUAGE_M_13 as LanguageProcessor;
+}
