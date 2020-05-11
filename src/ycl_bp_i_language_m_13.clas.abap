@@ -1,0 +1,13 @@
+CLASS ycl_bp_i_language_m_13 DEFINITION
+PUBLIC
+ABSTRACT
+FINAL
+FOR BEHAVIOR OF YI_Language_M_13.
+ENDCLASS.
+
+CLASS ycl_bp_i_language_m_13 IMPLEMENTATION.
+ENDCLASS.
+
+
+
+

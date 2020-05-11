@@ -21,12 +21,88 @@ CLASS ycl_generate_language_data_13 IMPLEMENTATION.
 
 *   fill internal travel table (itab)
     itab = VALUE #(
-  ( mykey = '02D5290E594C1EDA93815057FD946624' l_id = '1' l_name = 'Java' l_description = 'Beschreibung hier' l_snippet = 'snippet' l_rating = '5' )
-  ( mykey = '02D5290E594C1EDA93815C50CD7AE62A' l_id = '2' l_name = 'C' l_description = 'Beschreibung hier' l_snippet = 'snippet' l_rating = '3' )
-  ( mykey = '02D5290E594C1EDA93858EED2DA2EB0B' l_id = '3' l_name = 'Python' l_description = 'Beschreibung hier' l_snippet = 'snippet' l_rating = '1' )
-  ( mykey = '02D5290E594C1EDA93858EED2DA2EB1B' l_id = '4' l_name = 'JavaScript' l_description = 'Beschreibung hier' l_snippet = 'snippet' l_rating = '2' )
+  ( mykey = '02D5290E594C1EDA93815057FD946624'
+    l_id = '1'
+    l_name = 'Java'
+    l_description = 'Application, business, client-side, general, mobile development, server-side, web'
+    l_snippet = 'class HelloWorld {  static public void main( String args[] ) {    System.out.println( "Hello World!" );  }}'
+    l_rating = '5'
+    l_ide = '1. Eclipse, 2. IntelliJ IDEA, 3. NetBeans'
+    l_favourite = '')
+  ( mykey = '02D5290E594C1EDA93815C50CD7AE62A'
+    l_id = '2'
+    l_name = 'C++'
+    l_description = 'Application, system'
+    l_snippet = '#include <iostream.h>main(){    cout << "Hello World!" << endl;    return 0;}'
+    l_rating = '3'
+    l_ide = '1. DEV C++, 2. Visual Sudio Code, 3. Code::Blocks'
+    l_favourite = '')
+  ( mykey = '02D5290E594C1EDA93858EED2DA2EB0B'
+    l_id = '3'
+    l_name = 'Python'
+    l_description = 'Application, general, web, scripting, artificial intelligence, scientific computing'
+    l_snippet = 'print("Hello World")'
+    l_rating = '5'
+    l_ide = '1. Eclipse + Pydev, 2. Pycharm, 3. Visual Studio Code'
+    l_favourite = '')
+  ( mykey = '02D5290E594C1EDA93858EED2DA2EB1B'
+    l_id = '4'
+    l_name = 'JavaScript'
+    l_description = 'Client-side, server-side, web'
+    l_snippet = 'fun main(args : Array<String>) {    println("Hello, world!")}'
+    l_rating = '2'
+    l_ide = '1. Visual Studio Code, 2. Atom, 3. Brackets'
+    l_favourite = '')
+  ( mykey = '02D5290E594C1EDA93858EED2DA2EB1D'
+    l_id = '5'
+    l_name = 'Ruby'
+    l_description = 'Application, scripting, web'
+    l_snippet = 'puts "Hello World!"'
+    l_rating = '4'
+    l_ide = '1. Atom, 2. VSCode, 3. RubyMine'
+    l_favourite = '')
+  ( mykey = '02D5290E594C1EDA93858EED2DA2EB22'
+    l_id = '6'
+    l_name = 'Swift'
+    l_description = 'Application, general'
+    l_snippet = 'println("Hello, world!")'
+    l_rating = '4'
+    l_ide = '1. AppCode, 2. Xcode, 3. Atom'
+    l_favourite = '')
+  ( mykey = '02D5290E594C1EDA93858EED2DA2EB24'
+    l_id = '7'
+    l_name = 'Go'
+    l_description = 'Application, web, server-side'
+    l_snippet = 'package mainimport "fmt"func main() { fmt.Printf("Hello World\n")}  '
+    l_rating = '4'
+    l_ide = '1. Visual Studio Code, 2. LiteIDE, 3. Eclipse with GoClipse'
+    l_favourite = '')
+  ( mykey = '02D5290E594C1EDA93858EED2DA2EB2A'
+    l_id = '8'
+    l_name = 'Haskell'
+    l_description = 'Application'
+    l_snippet = 'main = putStrLn "Hello World"'
+    l_rating = '3'
+    l_ide = '1. Emacs, 2. Visual Studio Code, 3. Atom'
+    l_favourite = '')
+  ( mykey = '02D5290E594C1EDA93858EED2DA2EB2C'
+    l_id = '9'
+    l_name = 'Kotlin'
+    l_description = 'Application, mobile development, server-side, client-side, web'
+    l_snippet = 'fun main(args : Array<String>) { println("Hello, world!") }'
+    l_rating = '4'
+    l_ide = '1. IntelliJ IDEA, 2. Android Studio, 3. Vim'
+    l_favourite = '')
+  ( mykey = '02D5290E594C1EDA93858EED2DA2EB3D'
+    l_id = '10'
+    l_name = 'MATLAB'
+    l_description = 'Highly domain-specific, numerical computing'
+    l_snippet = 'disp("Hello World");'
+    l_rating = '5'
+    l_ide = 'Matlab IDE'
+    l_favourite = '')
   ).
-
+    out->write( itab ).
 *   delete existing entries in the database table
     DELETE FROM ylanguage_13.
 

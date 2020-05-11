@@ -1,0 +1,25 @@
+managed implementation in class YCL_BP_I_LANGUAGE_M_13 unique; // implementation in class zbp_i_language_m_13 unique;
+
+define behavior for YI_LANGUAGE_M_13 alias Language
+persistent table ylanguage_13
+lock master
+{
+// mandatory fields that are required
+field ( mandatory ) l_name;
+
+field ( readonly ) l_id;
+// standard operations
+create;
+update;
+delete;
+// instance action and dynamic action control
+action ( features : instance ) addToFavourite result [1] $self;
+
+// validations
+//validation validateID on save { field l_id; }
+validation validateName on save { field l_name; }
+
+// determination
+    determination CalculateLanguageKey on modify
+    { create; }
+}
