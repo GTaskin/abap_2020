@@ -25,7 +25,7 @@ define root view entity YC_LANGUAGE_M_13
                      targetQualifier: 'Rating' } ]
 
       @UI: {
-              lineItem:       [ { position: 10, importance: #HIGH, label: ' ID ' } ],
+              lineItem:       [ { position: 10, importance: #HIGH, label: 'ID' } ],
               identification: [ { position: 10, label: 'Language ID' } ] }
       @Search.defaultSearchElement: false
       l_id          as LanguageID,
