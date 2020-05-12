@@ -28,7 +28,8 @@ CLASS ycl_generate_language_data_13 IMPLEMENTATION.
     l_snippet = 'class HelloWorld {  static public void main( String args[] ) {    System.out.println( "Hello World!" );  }}'
     l_rating = '5'
     l_ide = '1. Eclipse, 2. IntelliJ IDEA, 3. NetBeans'
-    l_favourite = '')
+    l_favourite = ''
+    l_wikipedia = ' https://de.wikipedia.org/wiki/Java_(Programmiersprache) ' )
   ( mykey = '02D5290E594C1EDA93815C50CD7AE62A'
     l_id = '2'
     l_name = 'C++'
@@ -36,7 +37,8 @@ CLASS ycl_generate_language_data_13 IMPLEMENTATION.
     l_snippet = '#include <iostream.h>main(){    cout << "Hello World!" << endl;    return 0;}'
     l_rating = '3'
     l_ide = '1. DEV C++, 2. Visual Sudio Code, 3. Code::Blocks'
-    l_favourite = '')
+    l_favourite = ''
+    l_wikipedia = ' https://de.wikipedia.org/wiki/C%2B%2B ' )
   ( mykey = '02D5290E594C1EDA93858EED2DA2EB0B'
     l_id = '3'
     l_name = 'Python'
@@ -44,7 +46,8 @@ CLASS ycl_generate_language_data_13 IMPLEMENTATION.
     l_snippet = 'print("Hello World")'
     l_rating = '5'
     l_ide = '1. Eclipse + Pydev, 2. Pycharm, 3. Visual Studio Code'
-    l_favourite = '')
+    l_favourite = ''
+    l_wikipedia = ' https://de.wikipedia.org/wiki/Python_(Programmiersprache) ' )
   ( mykey = '02D5290E594C1EDA93858EED2DA2EB1B'
     l_id = '4'
     l_name = 'JavaScript'
@@ -52,7 +55,8 @@ CLASS ycl_generate_language_data_13 IMPLEMENTATION.
     l_snippet = 'fun main(args : Array<String>) {    println("Hello, world!")}'
     l_rating = '2'
     l_ide = '1. Visual Studio Code, 2. Atom, 3. Brackets'
-    l_favourite = '')
+    l_favourite = ''
+    l_wikipedia = ' https://de.wikipedia.org/wiki/JavaScript ' )
   ( mykey = '02D5290E594C1EDA93858EED2DA2EB1D'
     l_id = '5'
     l_name = 'Ruby'
@@ -60,7 +64,8 @@ CLASS ycl_generate_language_data_13 IMPLEMENTATION.
     l_snippet = 'puts "Hello World!"'
     l_rating = '4'
     l_ide = '1. Atom, 2. VSCode, 3. RubyMine'
-    l_favourite = '')
+    l_favourite = ''
+    l_wikipedia = ' https://de.wikipedia.org/wiki/Ruby_(Programmiersprache) ' )
   ( mykey = '02D5290E594C1EDA93858EED2DA2EB22'
     l_id = '6'
     l_name = 'Swift'
@@ -68,7 +73,8 @@ CLASS ycl_generate_language_data_13 IMPLEMENTATION.
     l_snippet = 'println("Hello, world!")'
     l_rating = '4'
     l_ide = '1. AppCode, 2. Xcode, 3. Atom'
-    l_favourite = '')
+    l_favourite = ''
+    l_wikipedia = ' https://de.wikipedia.org/wiki/Swift_(Programmiersprache) ' )
   ( mykey = '02D5290E594C1EDA93858EED2DA2EB24'
     l_id = '7'
     l_name = 'Go'
@@ -76,7 +82,8 @@ CLASS ycl_generate_language_data_13 IMPLEMENTATION.
     l_snippet = 'package mainimport "fmt"func main() { fmt.Printf("Hello World\n")}  '
     l_rating = '4'
     l_ide = '1. Visual Studio Code, 2. LiteIDE, 3. Eclipse with GoClipse'
-    l_favourite = '')
+    l_favourite = ''
+    l_wikipedia = ' https://de.wikipedia.org/wiki/Go_(Programmiersprache) ' )
   ( mykey = '02D5290E594C1EDA93858EED2DA2EB2A'
     l_id = '8'
     l_name = 'Haskell'
@@ -84,7 +91,8 @@ CLASS ycl_generate_language_data_13 IMPLEMENTATION.
     l_snippet = 'main = putStrLn "Hello World"'
     l_rating = '3'
     l_ide = '1. Emacs, 2. Visual Studio Code, 3. Atom'
-    l_favourite = '')
+    l_favourite = ''
+    l_wikipedia = ' https://de.wikipedia.org/wiki/Haskell_(Programmiersprache)' )
   ( mykey = '02D5290E594C1EDA93858EED2DA2EB2C'
     l_id = '9'
     l_name = 'Kotlin'
@@ -92,7 +100,8 @@ CLASS ycl_generate_language_data_13 IMPLEMENTATION.
     l_snippet = 'fun main(args : Array<String>) { println("Hello, world!") }'
     l_rating = '4'
     l_ide = '1. IntelliJ IDEA, 2. Android Studio, 3. Vim'
-    l_favourite = '')
+    l_favourite = ''
+    l_wikipedia = ' https://de.wikipedia.org/wiki/Kotlin_(Programmiersprache) ' )
   ( mykey = '02D5290E594C1EDA93858EED2DA2EB3D'
     l_id = '10'
     l_name = 'Matlab'
@@ -100,10 +109,9 @@ CLASS ycl_generate_language_data_13 IMPLEMENTATION.
     l_snippet = 'disp("Hello World");'
     l_rating = '5'
     l_ide = 'Matlab IDE'
-    l_favourite = '')
+    l_favourite = ''
+    l_wikipedia = ' https://de.wikipedia.org/wiki/Matlab ' )
   ).
-    SORT itab BY l_id ASCENDING.
-    out->write( itab ).
 
 *   delete existing entries in the database table
     DELETE FROM ylanguage_13.
@@ -113,6 +121,9 @@ CLASS ycl_generate_language_data_13 IMPLEMENTATION.
 
 *   check the result
     SELECT * FROM ylanguage_13 INTO TABLE @itab.
+        SORT itab BY l_id ASCENDING.
+
+
     out->write( sy-dbcnt ).
     out->write( 'Language data inserted successfully!').
   ENDMETHOD.

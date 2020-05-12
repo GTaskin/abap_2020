@@ -12,6 +12,7 @@ as select from ylanguage_13 as Language {
     l_snippet,
     l_rating,
     l_ide,
-    l_favourite
+    l_favourite,
+    l_wikipedia
    
 }

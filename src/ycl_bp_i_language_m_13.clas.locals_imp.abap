@@ -8,12 +8,14 @@ CLASS lhc_language DEFINITION INHERITING FROM cl_abap_behavior_handler.
 
     TYPES tt_language_update TYPE TABLE FOR UPDATE yi_language_m_13.
 
-    METHODS validate_name             FOR VALIDATION language~validateName    IMPORTING keys FOR language.
-    METHODS validate_rating             FOR VALIDATION language~validateRating    IMPORTING keys FOR language.
-    METHODS set_status_completed       FOR MODIFY IMPORTING   keys FOR ACTION language~addToFavourite              RESULT result.
+    METHODS validate_name              FOR VALIDATION language~validateName      IMPORTING keys FOR language.
+    METHODS validate_rating            FOR VALIDATION language~validateRating    IMPORTING keys FOR language.
+    "METHODS validate_id                FOR VALIDATION language~validateId        IMPORTING keys FOR language.
+    METHODS add_to_favourite       FOR MODIFY IMPORTING   keys FOR ACTION language~addToFavourite              RESULT result.
     METHODS get_features               FOR FEATURES IMPORTING keys REQUEST    requested_features FOR language    RESULT result.
 
-    METHODS calculateLanguagelkey FOR DETERMINATION language~calculatelanguagekey IMPORTING keys FOR language.
+    METHODS calculatelanguagekey FOR DETERMINATION language~calculatelanguagekey IMPORTING keys FOR language.
+
 
 
 ENDCLASS.
@@ -50,6 +52,7 @@ CLASS lhc_language IMPLEMENTATION.
       ENDIF.
 
     ENDLOOP.
+
   ENDMETHOD.
 
 **********************************************************************
@@ -84,12 +87,13 @@ CLASS lhc_language IMPLEMENTATION.
     ENDLOOP.
   ENDMETHOD.
 
+
 ********************************************************************************
 *
 * Implements language action
 *
 ********************************************************************************
-  METHOD set_status_completed.
+  METHOD add_to_favourite.
 
     " Modify in local mode: BO-related updates that are not relevant for authorization checks
     MODIFY ENTITIES OF yi_language_m_13 IN LOCAL MODE
@@ -133,7 +137,7 @@ CLASS lhc_language IMPLEMENTATION.
 
     READ ENTITY yi_language_m_13 FROM VALUE #( FOR keyval IN keys
                                                       (  %key                    = keyval-%key
-                                                         "%control-language_id      = if_abap_behv=>mk-on
+                                                         %control-l_id           = if_abap_behv=>mk-on
                                                          "%control-overall_status = if_abap_behv=>mk-on
                                                          %control-l_favourite = if_abap_behv=>mk-on
                                                         ) )
@@ -146,11 +150,19 @@ CLASS lhc_language IMPLEMENTATION.
                                                                     THEN if_abap_behv=>fc-o-disabled
                                                                     ELSE if_abap_behv=>fc-o-enabled   )
                       ) ).
+    MODIFY ENTITIES OF yi_language_m_13 IN LOCAL MODE
+           ENTITY language
+              UPDATE FROM VALUE #( FOR key IN keys ( mykey = key-mykey
+                                                     l_favourite = ' '
+                                                     %control-l_favourite = if_abap_behv=>mk-on ) )
+           FAILED   failed
+           REPORTED reported.
 
   ENDMETHOD.
 
 
-  METHOD calculateLanguagelKey.
+  METHOD calculatelanguagekey.
+
     SELECT FROM ylanguage_13
         FIELDS MAX( l_id ) INTO @DATA(lv_max_language_id).
 
@@ -160,6 +172,8 @@ CLASS lhc_language IMPLEMENTATION.
         ENTITY Language
           UPDATE SET FIELDS WITH VALUE #( ( mykey     = ls_key-mykey
                                             l_id = lv_max_language_id ) )
+
+
           REPORTED DATA(ls_reported).
       APPEND LINES OF ls_reported-language TO reported-language.
     ENDLOOP.

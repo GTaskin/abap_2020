@@ -16,11 +16,11 @@ delete;
 action ( features : instance ) addToFavourite result [1] $self;
 
 // validations
-//validation validateID on save { field l_id; }
 validation validateName on save { field l_name; }
 validation validateRating on save { field l_rating; }
+//validation validateId on save { field l_id; }
 
 // determination
-    determination CalculateLanguageKey on modify
+    determination calculatelanguagekey on modify
     { create; }
 }
