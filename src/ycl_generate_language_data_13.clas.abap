@@ -95,14 +95,16 @@ CLASS ycl_generate_language_data_13 IMPLEMENTATION.
     l_favourite = '')
   ( mykey = '02D5290E594C1EDA93858EED2DA2EB3D'
     l_id = '10'
-    l_name = 'MATLAB'
+    l_name = 'Matlab'
     l_description = 'Highly domain-specific, numerical computing'
     l_snippet = 'disp("Hello World");'
     l_rating = '5'
     l_ide = 'Matlab IDE'
     l_favourite = '')
   ).
+    SORT itab BY l_id ASCENDING.
     out->write( itab ).
+
 *   delete existing entries in the database table
     DELETE FROM ylanguage_13.
 

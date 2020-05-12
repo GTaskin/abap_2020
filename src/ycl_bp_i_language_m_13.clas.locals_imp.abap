@@ -8,7 +8,8 @@ CLASS lhc_language DEFINITION INHERITING FROM cl_abap_behavior_handler.
 
     TYPES tt_language_update TYPE TABLE FOR UPDATE yi_language_m_13.
 
-    METHODS validatename             FOR VALIDATION language~validatename    IMPORTING keys FOR language.
+    METHODS validate_name             FOR VALIDATION language~validateName    IMPORTING keys FOR language.
+    METHODS validate_rating             FOR VALIDATION language~validateRating    IMPORTING keys FOR language.
     METHODS set_status_completed       FOR MODIFY IMPORTING   keys FOR ACTION language~addToFavourite              RESULT result.
     METHODS get_features               FOR FEATURES IMPORTING keys REQUEST    requested_features FOR language    RESULT result.
 
@@ -22,10 +23,10 @@ CLASS lhc_language IMPLEMENTATION.
 
 **********************************************************************
 *
-* Check name and id
+* Check name
 *
 **********************************************************************
-  METHOD validatename.
+  METHOD validate_name.
 
     READ ENTITY yi_language_m_13\\language FROM VALUE #(
     FOR <root_key> IN keys ( %key     = <root_key>
@@ -35,16 +36,52 @@ CLASS lhc_language IMPLEMENTATION.
     DATA lt_languages TYPE SORTED TABLE OF ylanguage_13 WITH UNIQUE KEY l_id.
 
     " Optimization of DB select: extract distinct non-initial customer IDs
-    lt_languages = CORRESPONDING #( lt_language DISCARDING DUPLICATES MAPPING l_id = l_id EXCEPT * ).
-    DELETE lt_languages WHERE l_id IS INITIAL.
-    DELETE lt_languages WHERE l_name CA 'ÄäÖöÜüß'.
-    CHECK lt_languages IS NOT INITIAL.
+    "DELETE lt_languages WHERE l_name CA 'ÄäÖöÜüß'.
 
-    " Check if customer ID exist
-    SELECT FROM ylanguage_13 FIELDS l_id
-      FOR ALL ENTRIES IN @lt_languages
-      WHERE l_id = @lt_languages-l_id
-      INTO TABLE @DATA(lt_languages_db).
+     LOOP AT lt_language INTO DATA(ls_language).
+      IF ls_language-l_name CA 'ÄäÖöÜüß'.
+        APPEND VALUE #(  mykey = ls_language-mykey ) TO failed.
+        APPEND VALUE #(  mykey = ls_language-mykey
+                         %msg      = new_message( id       = 'YHSKA13'
+                                                  number   = '001'
+                                                  v1       = ls_language-l_name
+                                                  severity = if_abap_behv_message=>severity-error )
+                         %element-l_name = if_abap_behv=>mk-on ) TO reported.
+      ENDIF.
+
+    ENDLOOP.
+  ENDMETHOD.
+
+**********************************************************************
+*
+* Check rating
+*
+**********************************************************************
+  METHOD validate_rating.
+
+    READ ENTITY yi_language_m_13\\language FROM VALUE #(
+    FOR <root_key> IN keys ( %key     = <root_key>
+                                   %control = VALUE #( l_id = if_abap_behv=>mk-on ) ) )
+          RESULT DATA(lt_language).
+
+    DATA lt_languages TYPE SORTED TABLE OF ylanguage_13 WITH UNIQUE KEY l_id.
+
+    " Optimization of DB select: extract distinct non-initial customer IDs
+    "DELETE lt_languages WHERE l_name CA 'ÄäÖöÜüß'.
+
+     LOOP AT lt_language INTO DATA(ls_language).
+     IF NOT ls_language-l_rating CO ''.
+      IF NOT ls_language-l_rating CA '12345'.
+        APPEND VALUE #(  mykey = ls_language-mykey ) TO failed.
+        APPEND VALUE #(  mykey = ls_language-mykey
+                         %msg      = new_message( id       = 'YHSKA13'
+                                                  number   = '002'
+                                                  v1       = ls_language-l_rating
+                                                  severity = if_abap_behv_message=>severity-error )
+                         %element-l_name = if_abap_behv=>mk-on ) TO reported.
+      ENDIF.
+    ENDIF.
+    ENDLOOP.
   ENDMETHOD.
 
 ********************************************************************************

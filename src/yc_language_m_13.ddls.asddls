@@ -26,7 +26,7 @@ define root view entity YC_LANGUAGE_M_13
 
       @UI: {
               lineItem: [{position:30 }],
-              identification: [ { position: 30, label: 'Languagename' } ] }
+              identification: [ { position: 30, label: 'Language name' } ] }
       l_name        as Name,
 
       @UI: {
@@ -34,7 +34,7 @@ define root view entity YC_LANGUAGE_M_13
               dataPoint: { title: 'Rating',
                            visualization: #RATING,
                            targetValue: 5},
-              identification: [{position: 40, label:'Rating' }] }
+              identification: [{position: 40, label:'Rating [1..5 Stairs]' }] }
       @Search.defaultSearchElement: true
       l_rating      as Rating,
 
