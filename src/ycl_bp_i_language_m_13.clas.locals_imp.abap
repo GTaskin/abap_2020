@@ -11,10 +11,10 @@ CLASS lhc_language DEFINITION INHERITING FROM cl_abap_behavior_handler.
     METHODS validate_name              FOR VALIDATION language~validateName      IMPORTING keys FOR language.
     METHODS validate_rating            FOR VALIDATION language~validateRating    IMPORTING keys FOR language.
     "METHODS validate_id                FOR VALIDATION language~validateId        IMPORTING keys FOR language.
-    METHODS add_to_favourite       FOR MODIFY IMPORTING   keys FOR ACTION language~addToFavourite              RESULT result.
+    METHODS set_status_completed       FOR MODIFY IMPORTING   keys FOR ACTION language~addToFavourite              RESULT result.
     METHODS get_features               FOR FEATURES IMPORTING keys REQUEST    requested_features FOR language    RESULT result.
 
-    METHODS calculate_language_key FOR DETERMINATION language~CalculateLanguageKey IMPORTING keys FOR language.
+    METHODS CalculateLanguageKey FOR DETERMINATION language~CalculateLanguageKey IMPORTING keys FOR language.
 
 
 
@@ -93,7 +93,7 @@ CLASS lhc_language IMPLEMENTATION.
 * Implements language action
 *
 ********************************************************************************
-  METHOD add_to_favourite.
+  METHOD set_status_completed.
 
     " Modify in local mode: BO-related updates that are not relevant for authorization checks
     MODIFY ENTITIES OF yi_language_m_13 IN LOCAL MODE
@@ -161,7 +161,7 @@ CLASS lhc_language IMPLEMENTATION.
   ENDMETHOD.
 
 
-  METHOD calculate_language_key.
+  METHOD calculatelanguagekey.
 
 
     SELECT FROM ylanguage_13
