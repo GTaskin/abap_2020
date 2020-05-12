@@ -16,6 +16,7 @@ CLASS ycl_generate_language_data_13 IMPLEMENTATION.
 
     DATA:itab TYPE TABLE OF ylanguage_13.
 
+
 *   read current timestamp
     GET TIME STAMP FIELD DATA(zv_tsl).
 

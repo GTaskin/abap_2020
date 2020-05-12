@@ -21,6 +21,6 @@ validation validateRating on save { field l_rating; }
 //validation validateId on save { field l_id; }
 
 // determination
-    determination calculatelanguagekey on modify
+    determination CalculateLanguageKey on modify
     { create; }
 }

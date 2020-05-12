@@ -16,7 +16,7 @@ define root view entity YC_LANGUAGE_M_13
                      position:        10 } ]
       @UI.hidden: true
 
-      key mykey         as LanguageMyKey,
+      key mykey         as LangugageUUID,
   
       @UI.facet: [ { id:           'idHeaderRating',
                      purpose:         #HEADER,
@@ -40,7 +40,7 @@ define root view entity YC_LANGUAGE_M_13
               dataPoint: { title: 'Language Rating',
                            visualization: #RATING,
                            targetValue: 5},
-              identification: [{position: 40, label:'Rating [1..5 Stairs]' }] }
+              identification: [{position: 40, label:'Rating [1..5 Stars]' }] }
       @Search.defaultSearchElement: true
       l_rating      as Rating,
 
@@ -59,9 +59,11 @@ define root view entity YC_LANGUAGE_M_13
       @UI: {
                lineItem:       [ { position: 70 } ],
                identification: [ { position: 70, label: 'Description' } ]}
+      @Search.defaultSearchElement: true
       l_description as Description,
       
       @UI.identification: [ { position: 80, label: 'IDE' } ]
+      @Search.defaultSearchElement: true
       l_ide as IDE,
       
       @UI.identification: [ { position: 80, label: 'Wikipedia URL' } ]
