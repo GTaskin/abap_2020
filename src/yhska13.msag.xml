@@ -18,13 +18,13 @@
      <SPRSL>E</SPRSL>
      <ARBGB>YHSKA13</ARBGB>
      <MSGNR>002</MSGNR>
-     <TEXT>Rating should be a number between 1 and 5</TEXT>
+     <TEXT>Rating should be a number between 0 and 5</TEXT>
     </T100>
     <T100>
      <SPRSL>E</SPRSL>
      <ARBGB>YHSKA13</ARBGB>
      <MSGNR>003</MSGNR>
-     <TEXT>ID is not correct</TEXT>
+     <TEXT>Please enter a name</TEXT>
     </T100>
    </T100>
   </asx:values>

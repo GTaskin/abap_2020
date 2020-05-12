@@ -40,7 +40,7 @@ define root view entity YC_LANGUAGE_M_13
               dataPoint: { title: 'Language Rating',
                            visualization: #RATING,
                            targetValue: 5},
-              identification: [{position: 40, label:'Rating [1..5 Stars]' }] }
+              identification: [{position: 40, label:'Rating [0..5 Stars]' }] }
       @Search.defaultSearchElement: true
       l_rating      as Rating,
 

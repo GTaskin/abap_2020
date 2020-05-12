@@ -41,17 +41,32 @@ CLASS lhc_language IMPLEMENTATION.
     "DELETE lt_languages WHERE l_name CA 'ÄäÖöÜüß'.
 
      LOOP AT lt_language INTO DATA(ls_language).
-      IF ls_language-l_name CA 'ÄäÖöÜüß'.
-        APPEND VALUE #(  mykey = ls_language-mykey ) TO failed.
-        APPEND VALUE #(  mykey = ls_language-mykey
-                         %msg      = new_message( id       = 'YHSKA13'
-                                                  number   = '001'
-                                                  v1       = ls_language-l_name
-                                                  severity = if_abap_behv_message=>severity-error )
-                         %element-l_name = if_abap_behv=>mk-on ) TO reported.
-      ENDIF.
+
+          IF ls_language-l_name CA 'ÄäÖöÜüß'.
+            APPEND VALUE #(  mykey = ls_language-mykey ) TO failed.
+            APPEND VALUE #(  mykey = ls_language-mykey
+                             %msg      = new_message( id       = 'YHSKA13'
+                                                      number   = '001'
+                                                      v1       = ls_language-l_name
+                                                      severity = if_abap_behv_message=>severity-error )
+                             %element-l_name = if_abap_behv=>mk-on ) TO reported.
+          ENDIF.
+
+          IF ls_language-l_name CO ''.
+            APPEND VALUE #(  mykey = ls_language-mykey ) TO failed.
+            APPEND VALUE #(  mykey = ls_language-mykey
+                             %msg      = new_message( id       = 'YHSKA13'
+                                                      number   = '003'
+                                                      v1       = ls_language-l_name
+                                                      severity = if_abap_behv_message=>severity-error )
+                             %element-l_name = if_abap_behv=>mk-on ) TO reported.
+          ENDIF.
+
+
 
     ENDLOOP.
+
+
 
   ENDMETHOD.
 
@@ -70,20 +85,20 @@ CLASS lhc_language IMPLEMENTATION.
     DATA lt_languages TYPE SORTED TABLE OF ylanguage_13 WITH UNIQUE KEY l_id.
 
     " Optimization of DB select: extract distinct non-initial customer IDs
-    "DELETE lt_languages WHERE l_name CA 'ÄäÖöÜüß'.
+
 
      LOOP AT lt_language INTO DATA(ls_language).
-     IF NOT ls_language-l_rating CO ''.
-      IF NOT ls_language-l_rating CA '12345'.
+
+      IF NOT ls_language-l_rating CA '012345'.
         APPEND VALUE #(  mykey = ls_language-mykey ) TO failed.
         APPEND VALUE #(  mykey = ls_language-mykey
                          %msg      = new_message( id       = 'YHSKA13'
                                                   number   = '002'
                                                   v1       = ls_language-l_rating
                                                   severity = if_abap_behv_message=>severity-error )
-                         %element-l_name = if_abap_behv=>mk-on ) TO reported.
+                         %element-l_rating = if_abap_behv=>mk-on ) TO reported.
       ENDIF.
-    ENDIF.
+
     ENDLOOP.
   ENDMETHOD.
 

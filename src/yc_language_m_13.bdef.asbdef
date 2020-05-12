@@ -4,7 +4,7 @@ define behavior for YC_LANGUAGE_M_13 alias LanguageProcessor
 use etag
 {
 // scenario specific field control
-field ( mandatory ) Name;
+field ( mandatory ) Name, Rating;
 
 use create;
 use update;
