@@ -28,7 +28,7 @@ CLASS ycl_generate_language_data_13 IMPLEMENTATION.
     l_description = 'Application, business, client-side, general, mobile development, server-side, web'
     l_snippet = 'class HelloWorld {  static public void main( String args[] ) {    System.out.println( "Hello World!" );  }}'
     l_rating = '5'
-    l_ide = '1. Eclipse, 2. IntelliJ IDEA, 3. NetBeans'
+    l_ide = 'Eclipse, IntelliJ IDEA, NetBeans'
     l_favourite = ''
     l_wikipedia = ' https://de.wikipedia.org/wiki/Java_(Programmiersprache) ' )
   ( mykey = '02D5290E594C1EDA93815C50CD7AE62A'
@@ -37,7 +37,7 @@ CLASS ycl_generate_language_data_13 IMPLEMENTATION.
     l_description = 'Application, system'
     l_snippet = '#include <iostream.h>main(){    cout << "Hello World!" << endl;    return 0;}'
     l_rating = '3'
-    l_ide = '1. DEV C++, 2. Visual Sudio Code, 3. Code::Blocks'
+    l_ide = 'DEV C++, Visual Sudio Code, Code::Blocks'
     l_favourite = ''
     l_wikipedia = ' https://de.wikipedia.org/wiki/C%2B%2B ' )
   ( mykey = '02D5290E594C1EDA93858EED2DA2EB0B'
@@ -46,7 +46,7 @@ CLASS ycl_generate_language_data_13 IMPLEMENTATION.
     l_description = 'Application, general, web, scripting, artificial intelligence, scientific computing'
     l_snippet = 'print("Hello World")'
     l_rating = '5'
-    l_ide = '1. Eclipse + Pydev, 2. Pycharm, 3. Visual Studio Code'
+    l_ide = 'Eclipse + Pydev, Pycharm, Visual Studio Code'
     l_favourite = ''
     l_wikipedia = ' https://de.wikipedia.org/wiki/Python_(Programmiersprache) ' )
   ( mykey = '02D5290E594C1EDA93858EED2DA2EB1B'
@@ -55,7 +55,7 @@ CLASS ycl_generate_language_data_13 IMPLEMENTATION.
     l_description = 'Client-side, server-side, web'
     l_snippet = 'fun main(args : Array<String>) {    println("Hello, world!")}'
     l_rating = '2'
-    l_ide = '1. Visual Studio Code, 2. Atom, 3. Brackets'
+    l_ide = 'Visual Studio Code, Atom, Brackets'
     l_favourite = ''
     l_wikipedia = ' https://de.wikipedia.org/wiki/JavaScript ' )
   ( mykey = '02D5290E594C1EDA93858EED2DA2EB1D'
@@ -64,7 +64,7 @@ CLASS ycl_generate_language_data_13 IMPLEMENTATION.
     l_description = 'Application, scripting, web'
     l_snippet = 'puts "Hello World!"'
     l_rating = '4'
-    l_ide = '1. Atom, 2. VSCode, 3. RubyMine'
+    l_ide = 'Atom, VSCode, RubyMine'
     l_favourite = ''
     l_wikipedia = ' https://de.wikipedia.org/wiki/Ruby_(Programmiersprache) ' )
   ( mykey = '02D5290E594C1EDA93858EED2DA2EB22'
@@ -73,7 +73,7 @@ CLASS ycl_generate_language_data_13 IMPLEMENTATION.
     l_description = 'Application, general'
     l_snippet = 'println("Hello, world!")'
     l_rating = '4'
-    l_ide = '1. AppCode, 2. Xcode, 3. Atom'
+    l_ide = 'AppCode, Xcode, Atom'
     l_favourite = ''
     l_wikipedia = ' https://de.wikipedia.org/wiki/Swift_(Programmiersprache) ' )
   ( mykey = '02D5290E594C1EDA93858EED2DA2EB24'
@@ -82,7 +82,7 @@ CLASS ycl_generate_language_data_13 IMPLEMENTATION.
     l_description = 'Application, web, server-side'
     l_snippet = 'package mainimport "fmt"func main() { fmt.Printf("Hello World\n")}  '
     l_rating = '4'
-    l_ide = '1. Visual Studio Code, 2. LiteIDE, 3. Eclipse with GoClipse'
+    l_ide = 'Visual Studio Code, LiteIDE, Eclipse with GoClipse'
     l_favourite = ''
     l_wikipedia = ' https://de.wikipedia.org/wiki/Go_(Programmiersprache) ' )
   ( mykey = '02D5290E594C1EDA93858EED2DA2EB2A'
@@ -91,7 +91,7 @@ CLASS ycl_generate_language_data_13 IMPLEMENTATION.
     l_description = 'Application'
     l_snippet = 'main = putStrLn "Hello World"'
     l_rating = '3'
-    l_ide = '1. Emacs, 2. Visual Studio Code, 3. Atom'
+    l_ide = 'Emacs, Visual Studio Code, Atom'
     l_favourite = ''
     l_wikipedia = ' https://de.wikipedia.org/wiki/Haskell_(Programmiersprache)' )
   ( mykey = '02D5290E594C1EDA93858EED2DA2EB2C'
@@ -100,7 +100,7 @@ CLASS ycl_generate_language_data_13 IMPLEMENTATION.
     l_description = 'Application, mobile development, server-side, client-side, web'
     l_snippet = 'fun main(args : Array<String>) { println("Hello, world!") }'
     l_rating = '4'
-    l_ide = '1. IntelliJ IDEA, 2. Android Studio, 3. Vim'
+    l_ide = 'IntelliJ IDEA, Android Studio, Vim'
     l_favourite = ''
     l_wikipedia = ' https://de.wikipedia.org/wiki/Kotlin_(Programmiersprache) ' )
   ( mykey = '02D5290E594C1EDA93858EED2DA2EB3D'
