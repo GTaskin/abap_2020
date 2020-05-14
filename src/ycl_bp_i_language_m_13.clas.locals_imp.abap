@@ -37,8 +37,6 @@ CLASS lhc_language IMPLEMENTATION.
 
     DATA lt_languages TYPE SORTED TABLE OF ylanguage_13 WITH UNIQUE KEY l_id.
 
-    " Optimization of DB select: extract distinct non-initial customer IDs
-    "DELETE lt_languages WHERE l_name CA 'ÄäÖöÜüß'.
 
      LOOP AT lt_language INTO DATA(ls_language).
 
@@ -165,18 +163,11 @@ CLASS lhc_language IMPLEMENTATION.
                                                                     THEN if_abap_behv=>fc-o-disabled
                                                                     ELSE if_abap_behv=>fc-o-enabled   )
                       ) ).
-    MODIFY ENTITIES OF yi_language_m_13 IN LOCAL MODE
-           ENTITY language
-              UPDATE FROM VALUE #( FOR key IN keys ( mykey = key-mykey
-                                                     l_favourite = ' '
-                                                     %control-l_favourite = if_abap_behv=>mk-on ) )
-           FAILED   failed
-           REPORTED reported.
 
   ENDMETHOD.
 
 
-  METHOD calculatelanguagekey.
+  METHOD CalculateLanguageKey.
 
 
     SELECT FROM ylanguage_13
